@@ -1,0 +1,8 @@
+/.vscode
+/Logs
+Assembly-CSharp.csproj
+/Library
+/Packages
+/Temp
+maze.sln
+.DS_Store
