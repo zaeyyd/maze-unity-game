@@ -18,17 +18,23 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     private PlayerController playerScript;
+
+    public GameObject leaderBoardObject;
+
+    private LeaderBoardController leaderBoardScript;
+
+
     public GameObject gameEndMenu;
     public TextMeshProUGUI finalScore;
     void Start()
     {
         playeNameText.text = PlayerPrefs.GetString("playerName");
         playerScript = player.GetComponent<PlayerController>();
+        leaderBoardScript = leaderBoardObject.GetComponent<LeaderBoardController>();
+
         elapsedRunningTime = Time.time;
         startTime = Time.time;
         gameEndMenu.SetActive(false);
-
-
     }
 
     // Update is called once per frame
@@ -56,9 +62,11 @@ public class GameManager : MonoBehaviour
             playerScript.turnSpeed = 0;
 
             playerScript.atEnd = false;
+            leaderBoardScript.saveScore(timeInt,PlayerPrefs.GetString("playerName"));
             
+
             gameEndMenu.SetActive(true);
-            finalScore.text = timeInt.ToString();
+            finalScore.text = "SCORE: " + timeInt.ToString();
         }
 
     }
@@ -69,7 +77,6 @@ public class GameManager : MonoBehaviour
 
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
 }
