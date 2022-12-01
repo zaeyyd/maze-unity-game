@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - blueDoor
+  - redDoor
+  - greenDoor
+  - redKey
+  - blueKey
+  - greenKey
   layers:
   - Default
   - TransparentFX

@@ -115,5 +115,18 @@ using System.Collections.Generic;
             return highscores;
         }
 
+        // public List<KeyValuePair<string, int>> getTopTen(Dictionary<string, int> highscores)
+        // {
+        //     var all = new List<KeyValuePair<string, int>>();
+
+        //     foreach (var item in highscores)
+        //     {
+        //         print(item.Key);
+        //         print(item.Value);
+        //     }
+
+
+        // }
+
         
     }
