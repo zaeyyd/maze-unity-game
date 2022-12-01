@@ -6,16 +6,30 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    private float elapsedRunningTime = 0f;
+    private float startTime = 0f;
+    private int timeInt;
 
     public TextMeshProUGUI playeNameText;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI keysText;
+    public GameObject player;
+
+    private PlayerController playerScript;
     void Start()
     {
         playeNameText.text = PlayerPrefs.GetString("playerName");
+        playerScript = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        elapsedRunningTime = Time.time - startTime;
+        timeInt = (int)elapsedRunningTime;
+        timerText.text = timeInt.ToString();
+
+        keysText.text = "blue key: " + playerScript.hasBlueKey.ToString();
+
     }
 }

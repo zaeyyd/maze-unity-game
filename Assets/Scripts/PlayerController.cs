@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed = 250f;
     public float speed = 5f;
 
-    private bool hasRedKey;
-    private bool hasBlueKey;
-    private bool hasGreenKey;
+    public bool hasRedKey;
+    public bool hasBlueKey;
+    public bool hasGreenKey;
 
     Animator m_Animator;
     // Rigidbody m_Rigidbody;
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviour
     void Start ()
     {
         m_Animator = GetComponent<Animator> ();
-        // m_Rigidbody = GetComponent<Rigidbody> ();
     }
 
     void FixedUpdate ()
