@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playeNameText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI keysText;
+    private string keyString;
     public GameObject player;
 
     private PlayerController playerScript;
@@ -29,7 +30,18 @@ public class GameManager : MonoBehaviour
         timeInt = (int)elapsedRunningTime;
         timerText.text = timeInt.ToString();
 
-        keysText.text = "blue key: " + playerScript.hasBlueKey.ToString();
+        keyString = "";
+
+        if (playerScript.hasBlueKey){
+            keyString = keyString + "[ blue key ] ";
+        }
+        if (playerScript.hasRedKey){
+            keyString = keyString + "[ red key ] ";
+        }
+        if (playerScript.hasGreenKey){
+            keyString = keyString + "[ green key ] ";
+        }
+        keysText.text = keyString;
 
     }
 }

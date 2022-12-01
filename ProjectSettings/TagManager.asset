@@ -10,6 +10,7 @@ TagManager:
   - redKey
   - blueKey
   - greenKey
+  - END
   layers:
   - Default
   - TransparentFX

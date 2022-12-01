@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool ("isWalking", isWalking);
 
-        Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation (desiredForward);
+        // Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        // m_Rotation = Quaternion.LookRotation (desiredForward);
 
         var velocity = Vector3.forward * Input.GetAxis("Vertical") * speed;
         transform.Translate(velocity * Time.deltaTime);
