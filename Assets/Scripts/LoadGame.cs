@@ -61,7 +61,7 @@ using System.Collections.Generic;
         public void LoadTargetScene() 
         {
             SaveName();
-            SceneManager.LoadSceneAsync(SceneName);
+            SceneManager.LoadScene(SceneName);
         }
 
         private void SaveName()

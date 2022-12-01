@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public bool hasBlueKey;
     public bool hasGreenKey;
 
+    public bool atEnd;
+
     Animator m_Animator;
     // Rigidbody m_Rigidbody;
     Vector3 m_Movement;
@@ -35,8 +37,6 @@ public class PlayerController : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool ("isWalking", isWalking);
 
-        // Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        // m_Rotation = Quaternion.LookRotation (desiredForward);
 
         var velocity = Vector3.forward * Input.GetAxis("Vertical") * speed;
         transform.Translate(velocity * Time.deltaTime);
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        print(other.tag);
 
         if (other.tag == "greenKey"){
             hasGreenKey = true;
@@ -60,14 +59,13 @@ public class PlayerController : MonoBehaviour
             hasBlueKey = true;
             Destroy(other.gameObject);
         }
+        if (other.name == "END"){
+            atEnd = true;
+        }
         
     }
 
     private void OnCollisionEnter(Collision other) {
-        print(hasBlueKey);
-        print(hasRedKey);
-        print(hasGreenKey);
-        print(other.gameObject.tag);
 
         if (other.gameObject.tag == "blueDoor" && hasBlueKey){
             Destroy(other.gameObject);

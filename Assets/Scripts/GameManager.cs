@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -17,10 +18,17 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     private PlayerController playerScript;
+    public GameObject gameEndMenu;
+    public TextMeshProUGUI finalScore;
     void Start()
     {
         playeNameText.text = PlayerPrefs.GetString("playerName");
         playerScript = player.GetComponent<PlayerController>();
+        elapsedRunningTime = Time.time;
+        startTime = Time.time;
+        gameEndMenu.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -43,5 +51,25 @@ public class GameManager : MonoBehaviour
         }
         keysText.text = keyString;
 
+        if (playerScript.atEnd){
+            playerScript.speed = 0;
+            playerScript.turnSpeed = 0;
+
+            playerScript.atEnd = false;
+            
+            gameEndMenu.SetActive(true);
+            finalScore.text = timeInt.ToString();
+        }
+
     }
+
+    public void LoadMainMenu(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+
 }
